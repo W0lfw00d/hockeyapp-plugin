@@ -178,7 +178,7 @@ public class HockeyappRecorder extends Recorder implements SimpleBuildStep {
 
     @Override
     public void perform(@Nonnull Run<?, ?> build, @Nonnull FilePath filePath, @Nonnull Launcher launcher, @Nonnull TaskListener listener) throws InterruptedException, IOException {
-        if (build.getResult().isWorseOrEqualTo(Result.FAILURE))
+        if (build.getResult() != null && build.getResult().isWorseOrEqualTo(Result.FAILURE))
         {
             build.setResult(Result.FAILURE);
             return;
